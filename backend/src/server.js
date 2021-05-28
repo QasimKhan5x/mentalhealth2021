@@ -1,4 +1,7 @@
 
+// Register module/require aliases
+require('module-alias/register');
+
 
 // Patches
 const {inject, errorHandler} = require('express-custom-error');
@@ -12,15 +15,12 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 
-const logger = require('./util/logger');
+const logger = require('@util/logger');
 
 // Load .env Enviroment Variables to process.env
 
 require('mandatoryenv').load([
-    'DB_HOST',
-    'DB_DATABASE',
-    'DB_USER',
-    'DB_PASSWORD',
+    'DB_URL',
     'PORT',
     'SECRET'
 ]);
@@ -51,7 +51,7 @@ app.use('*', (req, res, next) => {
 
 // Assign Routes
 
-app.use('/', require('./routes/router.js'));
+app.use('/', require('@routes/router.js'));
 
 
 // Handle errors
