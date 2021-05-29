@@ -1,16 +1,29 @@
-.dropdown-toggle::after {
-    display: none;
-  }
-.text-decoration-none{
-  text-decoration: none!important;
+nav{
+  position: relative;  
+  margin: 0;
 }
+
+
 /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
 .icon-width { width: 2rem;}
 .right{
-float: right;
-
+  text-align: right;
 }
 .left{
-  float: left;
-  
+  text-align: left;
   }
+
+.container{
+align-items: center;
+
+}
+.ml0{
+  margin-left: 0;  
+}
+.md0{
+  margin-bottom: 0;
+}
+ul{
+text-align: center;
+
+}
