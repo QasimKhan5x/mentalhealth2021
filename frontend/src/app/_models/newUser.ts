@@ -1,11 +1,10 @@
 import { Entry } from "./entry";
 
-export class User {
-  "id": string;
+export class NewUser {
   "firstname": string;
-  "lasttname": string;
+  "lastname": string;
+  "id": string;
   "password": string;
   "age": number;
-  "dateCreation": string;
   "entries": Entry[];
 }

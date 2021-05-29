@@ -2,26 +2,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { NewUser } from '../_models/newUser';
-import { User } from '../_models/user';
+import { Entry } from '../_models/entry';
 import { baseUrl } from '../_shared/baseUrl';
 import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SignupService {
+export class EntryService {
 
-  constructor(private http: HttpClient,
-    private errorService: ErrorService) { }
+  constructor(
+    private http: HttpClient,
+    private errorService: ErrorService,
+  ) { }
 
-  createUser(newUser: NewUser): Observable<any> {
+  addEntry(userId: string, entry: Entry): Observable<any> {
     const options = {
       headers: new HttpHeaders({
         'dataType': 'application/json'
       })
     };
-    return this.http.post<User>(baseUrl + '/users', newUser, options)
+    return this.http.put(baseUrl + '/users/' + userId + '/entries/', entry, options)
       .pipe(catchError(this.errorService.printError));
   }
 }
