@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//zcs comment
+import { LoginService } from './services/login.service';
+import { SignupService } from './services/signup.service';
+
+//services
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LoginService, SignupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
