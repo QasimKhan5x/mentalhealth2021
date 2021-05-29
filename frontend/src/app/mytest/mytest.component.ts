@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntryService } from '../services/entry.service';
 import { LoginService } from '../services/login.service';
 import { SignupService } from '../services/signup.service';
+import { UserService } from '../services/user.service';
 import { Entry } from '../_models/entry';
 import { NewUser } from '../_models/newUser';
 import { User } from '../_models/user';
@@ -13,11 +14,13 @@ import { User } from '../_models/user';
   styleUrls: ['./mytest.component.css']
 })
 export class MytestComponent implements OnInit {
+  enteries!: Entry[];
   user!: User;
   constructor(
     private loginService: LoginService,
     private signupService: SignupService,
     private entryService: EntryService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,7 @@ export class MytestComponent implements OnInit {
     this.createUser();
     this.loginUser();
     this.createEntry();
+
   }
   loginUser() {
     this.loginService.getUser('1', '1234')
@@ -46,7 +50,7 @@ export class MytestComponent implements OnInit {
       id: '1',
       password: '1122',
       age: 18,
-      entries: []
+      enteries: []
     };
     this.signupService.createUser(newUser)
       .subscribe(
@@ -59,26 +63,43 @@ export class MytestComponent implements OnInit {
         }
       )
   }
-
-  createEntry() {
+  getEntry() {
     if (!this.user) {
       console.log('no user found');
       return;
     }
-    let newEntry: Entry = {
-      "image": 'google.com/images/1234',
-      "activities": ["food", "family"],
-      "mood": "happy",
-      "text": "Loving the wather",
-      "time": Date.toString()
-    };
-    this.entryService.addEntry(this.user.id, newEntry)
+    this.entryService.getEnteries(this.user.id)
       .subscribe(
-        (user) => {
-          console.log('ew entry created: ', user);
+        (entries) => {
+          this.enteries = entries;
+          console.log(entries);
         },
         (error) => {
-          console.log('new entry not created:', error);
+          console.log('enteries could not be found', error);
+        }
+      )
+  }
+  createEntry() {
+    if (!this.user) {
+      console.log('none logged in');
+      return;
+    }
+    let entry: Entry =
+    {
+      userid: this.user.id,
+      activities: ['food', 'family'],
+      image: 'google.com/images/1234',
+      mood: 'Meh',
+      text: 'weather could be beter',
+      time: new Date().toISOString()
+    }
+    this.entryService.addEntry(this.user.id, entry)
+      .subscribe(
+        (entry) => {
+          console.log(entry);
+        },
+        (error) => {
+          console.log(error);
 
         }
       )

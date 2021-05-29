@@ -7,5 +7,5 @@ export class User {
   "password": string;
   "age": number;
   "dateCreation": string;
-  "entries": Entry[];
+  "enteries": Entry[];
 }
