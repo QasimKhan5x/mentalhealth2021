@@ -18,7 +18,11 @@ export class EntryService {
     private errorService: ErrorService,
     private userService: UserService,
   ) { }
-
+  /**
+   * Get Entries From A Specific User
+   * @param userID takes Id of currently looged in user
+   * @returns observable of all enteries
+   */
   getEnteries(userID: string): Observable<Entry[]> {
     let url = baseUrl + '/enteries?userid=' + userID;
     console.log('accessing url ', url, " for enteries of id: ", userID);
@@ -26,7 +30,12 @@ export class EntryService {
     return this.http.get<Entry[]>(url)
       .pipe(catchError(this.errorService.printError));
   }
-  addEntry(userID: string, entry: Entry): Observable<Entry> {
+  /**
+   * Posts an entry into the Database.
+   * @param entry Takes Entry containing the id of current User and puts it inot database.
+   * @returns Observable of Current Entry Object
+   */
+  addEntry(entry: Entry): Observable<Entry> {
     const options = {
       headers: new HttpHeaders({
         'dataType': 'application/json'

@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeaderComponent } from './header/header/header.component';
-import { MytestComponent } from './mytest/mytest.component';
+import AddEntryComponent from './addEntry/add-entry/add-entry.component';
+import { AllEntriesComponent } from './allEntries/all-entries/all-entries.component';
+import { LoginComponent } from './login/login/login.component';
+import { RegisterComponent } from './register/register/register.component';
+
 
 const routes: Routes = [
-  { path: 'test', component: MytestComponent },
-  { path: 'home', component: HeaderComponent }
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: 'allentries', component: AllEntriesComponent },
+  { path: "addentry", component: AddEntryComponent },
+
 ];
 
 @NgModule({
