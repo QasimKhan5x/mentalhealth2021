@@ -1,5 +1,4 @@
 import { Entry } from "./entry";
-
 export class User {
   "id": string;
   "firstname": string;
@@ -7,5 +6,4 @@ export class User {
   "password": string;
   "age": number;
   "dateCreation": string;
-  "enteries": Entry[];
 }

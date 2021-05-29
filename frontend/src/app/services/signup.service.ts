@@ -14,7 +14,11 @@ export class SignupService {
 
   constructor(private http: HttpClient,
     private errorService: ErrorService) { }
-
+  /**
+   * Takes New User Object and puts it into database using POST method
+   * @param newUser takes NewUser Object containing required fields
+   * @returns Observable of User or an Error in case Server throws it
+   */
   createUser(newUser: NewUser): Observable<any> {
     const options = {
       headers: new HttpHeaders({

@@ -6,5 +6,4 @@ export class NewUser {
   "id": string;
   "password": string;
   "age": number;
-  "enteries": Entry[];
 }
