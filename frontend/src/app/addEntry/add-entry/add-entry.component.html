@@ -4,14 +4,89 @@
       <div class="mood-selector">
        <span class="special">Select mood:</span> 
         <div id="selector">
-          <i id="mood" class="ecstatic bi bi-emoji-laughing" (click)="onClick($event)"></i>
-          <i id="mood" class="happy bi bi-emoji-smile"(click)="onClick($event)"></i>
-          <i id="mood" class="content bi bi-emoji-neutral" (click)="onClick($event)"></i>
-          <i id="mood" class="sad bi bi-emoji-frown" (click)="onClick($event)"></i>
-          <i id="mood" class="angry bi bi-emoji-angry" (click)="onClick($event)"></i>  
+          <i id="mood" class="ecstatic bi bi-emoji-laughing" (click)="onMoodClick($event)"></i>
+          <i id="mood" class="happy bi bi-emoji-smile"(click)="onMoodClick($event)"></i>
+          <i id="mood" class="content bi bi-emoji-neutral" (click)="onMoodClick($event)"></i>
+          <i id="mood" class="sad bi bi-emoji-frown" (click)="onMoodClick($event)"></i>
+          <i id="mood" class="angry bi bi-emoji-angry" (click)="onMoodClick($event)"></i>  
         </div>
-    
+    <br>
+        <div class="col-12 pt-1">
+          <p class="mb-4 pb-2">       <span class="special">Select activity:</span> 
+          </p>
+        </div>
+        <div class="col-12 pb-5">
+          <input class="gaming checkbox-booking" type="checkbox" name="booking" id="booking-1" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-1">
+            <i class="bi bi-controller" ></i>
+<span class="text">Gaming</span>
+          </label><!--
+          --><input class="study checkbox-booking" type="checkbox" name="booking" id="booking-2" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-2">							
+            <i class="bi bi-book"></i>
+<span class="text">Study</span>
+          </label><!--
+          --><input class="travel checkbox-booking" type="checkbox" name="booking" id="booking-3" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-3" (click)="onActClick($event)">							
+            <i class="bi bi-building"></i>
+<span class="text">Travel</span>
+          </label><!--
+          --><input class="sports checkbox-booking" type="checkbox" name="booking" id="booking-4" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-4">							
+            <i class="bi bi-dice-6"></i>
+<span class="text">Sports</span>
+          </label><!--
+          --><input class="eating checkbox-booking" type="checkbox" name="booking" id="booking-5" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-5">							
+            <i class="bi bi-cup-straw"></i>
+<span class="text">Eating</span>
+          </label><!--
+          --><input class="shows/movies checkbox-booking" type="checkbox" name="booking" id="booking-6" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-6">							
+            <i class="bi bi-laptop"></i>
+<span class="text">Shows/Movies</span>
+          </label><!--
+          --><input class="shopping checkbox-booking" type="checkbox" name="booking" id="booking-7"(click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-7">							
+            <i class="bi bi-basket"></i>
+<span class="text">Shopping</span>
+          </label><!--
+          --><input class="painting checkbox-booking" type="checkbox" name="booking" id="booking-8" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-8">							
+            <i class="bi bi-brush"></i>
+<span class="text">Painting</span>
+          </label><!--
+          --><input class="driving checkbox-booking" type="checkbox" name="booking" id="booking-9" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-9">							
+            <i class="bi bi-truck"></i>
+<span class="text">Driving</span>
+          </label><!--
+          --><input class="photography checkbox-booking" type="checkbox" name="booking" id="booking-10" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-10">							
+            <i class="bi bi-camera"></i>
+            <span class="text">Photography</span>
+          </label><!--
+          --><input class="music checkbox-booking" type="checkbox" name="booking" id="booking-11" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-11">							
+            <i class="bi bi-earbuds"></i>
+            <span class="text">Music</span>
+          </label><!--
+          --><input class="writing checkbox-booking" type="checkbox" name="booking" id="booking-12" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-12">							
+            <i class="bi bi-pen"></i>
+<span class="text">Writing</span>
+          </label>
+          <input class="other checkbox-booking" type="checkbox" name="booking" id="booking-13" (click)="onActClick($event)">
+          <label class="for-checkbox-booking" for="booking-13">							
+            <i class="bi bi-lightbulb"></i>
+<span class="text">Other</span>
+          </label>
+        </div>
+     
+        
         <p> Selected mood is: <b>{{mood}}</b> </p>
+        <p> Selected activity is: <b>{{activity}}</b> </p>
+
     <textarea placeholder="Write down your feelings" rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
     
       
