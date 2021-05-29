@@ -12,6 +12,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: "calendar", component: CalendarComponent },
   {path: "my_profile", component: UserProfileComponent  },
   {path: "settings", component: SettingsComponent  },
+
 ];
 
 @NgModule({

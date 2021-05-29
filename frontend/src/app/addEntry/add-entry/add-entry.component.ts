@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+let activity = <Array<string>> new Array();
+
 @Component({
   selector: 'app-add-entry',
   templateUrl: './add-entry.component.html',
@@ -8,7 +10,7 @@ import * as $ from 'jquery';
 export default class AddEntryComponent implements OnInit {
   fileToUpload: any;
   mood: any;
-  activity: any;
+  currentActivity: any = "";
 
 
   
@@ -26,9 +28,19 @@ export default class AddEntryComponent implements OnInit {
    }
   
    onActClick(event: any) {
-     this.activity = event.target.classList[0];
-     $('.checkbox-booking').prop('checked', false);
-     $('.'+this.activity).prop('checked', true);
+     this.currentActivity = event.target.classList[0];
+     if (this.currentActivity == "bi" || this.currentActivity == "text" || this.currentActivity == "for-checkbox-booking") { return;}
+     const index = activity.indexOf(this.currentActivity);
+     if (index >= 0) {
+         activity.splice(index, 1);
+       
+     }
+       else {
+        activity.push(this.currentActivity);
+       }
+       console.log(activity);
+     this.currentActivity = activity.toString();
+     
     
    }
   

@@ -1,0 +1,13 @@
+<p>mytest works!</p>
+<button (click)='createEntry()'>
+  Create Entry
+</button>
+<button (click)='getEntry()'>
+  get Entry
+</button>
+<ul *ngIf='entries'>
+  <li *ngFor='let entry of entries'>
+    {{entry.mood}}
+    {{entry.text}}
+  </li>
+</ul>

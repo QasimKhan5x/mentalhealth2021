@@ -1,4 +1,61 @@
-const status = require('http-status');
+const User = require('../models/user')
+
+module.exports = {
+    async getUserById(req, res) {
+        try {
+            const _id = req.params.id;
+            const userData = await User.findById({_id});
+            if (!userData)
+                return res.status(404).send(e);
+            else
+                res.status(200).send(userData);
+        } catch (e) {
+            res.status(500).send(e);
+        }
+    },
+    async getUsers(req, res) {
+        try {
+            const usersData = await User.find();
+            res.status(200).send(usersData);
+        } catch (e) {
+            res.status(404).send(e);
+        }
+    },
+    async newUser(req, res) {
+        try {
+            const user = new User(req.body);
+            const userCreated = user.save();
+            res.status(201).send(userCreated);
+        } catch (e) {
+            res.status(400).send(e);
+        }
+    },
+    async deleteUser(req, res) {
+        try {
+            const _id = req.params.id;
+            if (!_id)
+                return res.status(400).send();
+            const deleted = await User.findByIdAndDelete(_id);
+            res.status(200).send(deleted);
+        } catch(e) {
+            res.status(500).send(e);
+        }
+    },
+    async updateUser(req, res) {
+        try {
+            const _id = req.params.id;
+            const updatedUsers = await User.findByIdAndUpdate(_id, req.body, {
+                new: true
+            })
+            res.status(200).send(updatedUsers);
+        } catch(e) {
+            res.status(404).send(e);
+        }
+    }
+}
+
+
+/*const status = require('http-status');
 
 const userModel = require('@models/users.js');
 
@@ -55,4 +112,4 @@ module.exports = {
 
         res.json({status: true, message: 'User deleted'});
     }
-}
+}*/
