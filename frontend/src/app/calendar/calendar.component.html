@@ -1,0 +1,37 @@
+<div class="row text-center">
+
+    <div class="col-md-4">
+     
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="btn-group">
+            <h1>{{ Month }}</h1>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="btn-group">
+            <div class="btn btn-danger" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
+                Month
+            </div>
+            <div class="btn btn-danger" (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">
+                Week
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div [ngSwitch]="view">
+
+    <mwl-calendar-month-view (dayClicked)="dayClicked($event.day)" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events">
+    </mwl-calendar-week-view>
+
+
+
+</div>
