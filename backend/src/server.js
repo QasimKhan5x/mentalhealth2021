@@ -27,6 +27,8 @@ require('mandatoryenv').load([
 
 const { PORT } = process.env;
 
+// Load DB
+require('./models/conn');
 
 // Instantiate an Express Application
 const app = express();
@@ -50,7 +52,6 @@ app.use('*', (req, res, next) => {
 })
 
 // Assign Routes
-
 app.use('/', require('@routes/router.js'));
 
 
