@@ -45,6 +45,10 @@ body {
     }
   }
 
+.container-fluid{
+  padding-left: 0%;
+  padding-right: 0%;
+}
 
   .tg-btn{
 margin-left: 15px;
