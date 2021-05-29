@@ -1,0 +1,34 @@
+<div class="container">
+    <header>
+      <h2>Add Entry</h2>
+      <div class="mood-selector">
+       <span class="special">Select mood:</span> 
+        <div id="selector">
+          <i id="mood" class="ecstatic bi bi-emoji-laughing" (click)="onClick($event)"></i>
+          <i id="mood" class="happy bi bi-emoji-smile"(click)="onClick($event)"></i>
+          <i id="mood" class="content bi bi-emoji-neutral" (click)="onClick($event)"></i>
+          <i id="mood" class="sad bi bi-emoji-frown" (click)="onClick($event)"></i>
+          <i id="mood" class="angry bi bi-emoji-angry" (click)="onClick($event)"></i>  
+        </div>
+    
+        <p> Selected mood is: <b>{{mood}}</b> </p>
+    <textarea placeholder="Write down your feelings" rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+    
+      
+      </div>  
+
+      <div class="form-group">
+        <span class="btn btn-outline-primary btn-file">
+        <input type="file"
+               id="file"
+              > </span>
+    </div>
+    <br>
+    <button class="btn btn-outline-primary" type="submit">Submit</button>
+    </header>
+    
+
+
+
+  </div>
+  
