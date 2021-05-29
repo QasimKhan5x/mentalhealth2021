@@ -5,7 +5,7 @@ const entrySchema = new mongoose.Schema({
     type: String,
     required: true,
     lowercase: true,
-    enum: ["rad", "good", "meh", "bad", "awful"]
+    enum: ["ecstatic", "happy", "content", "sad", "angry"]
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -25,7 +25,9 @@ const entrySchema = new mongoose.Schema({
   },
   activities: {
     type: [String],
-    lowercase: true
+    lowercase: true,
+    enum: ['gaming','study','travel','sports','eating','shows/movies','shopping',
+          'painting','driving','photography','music','writing','other']
   }
 });
 

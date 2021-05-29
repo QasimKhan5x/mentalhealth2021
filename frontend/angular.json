@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "2238e5db-2e51-46be-816b-6891980fad87"
+    "analytics": "394aaedc-d9b1-4047-af6f-909a29ff39e4"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -31,12 +31,13 @@
             ],
             "styles": [
               "src/styles.css",
-        "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-      "node_modules/jquery/dist/jquery.min.js", 
-      "node_modules/bootstrap/dist/js/bootstrap.min.js",  
-      "node_modules/popper.js/dist/umd/popper.min.js"]
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -60,14 +61,7 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
+            "development": {}
           },
           "defaultConfiguration": "production"
         },

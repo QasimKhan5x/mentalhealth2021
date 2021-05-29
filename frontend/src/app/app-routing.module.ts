@@ -8,12 +8,13 @@ import { RegisterComponent } from './register/register/register.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: 'allentries', component: AllEntriesComponent },
   { path: "addentry", component: AddEntryComponent },
-  
+
 ];
 
 @NgModule({
