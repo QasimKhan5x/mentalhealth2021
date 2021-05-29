@@ -5,8 +5,9 @@ module.exports = {
         try {
             const _id = req.params.id;
             const entries = await Entry.findById({_id});
-            if (!studentData)
-                return res.status(404).send(e);
+            console.log("Hello!");
+            if (!entries)
+                res.status(404).send(e);
             else
                 res.status(200).send(entries);
         } catch (e) {

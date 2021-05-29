@@ -12,7 +12,7 @@ router.get('/api/users', user.getUsers);
 
 router.post('/api/users', user.newUser);
 
-router.delete('/users/:id', user.deleteUser);
+router.delete('/api/users/:id', user.deleteUser);
 
 router.patch('/api/users/:id', user.updateUser);
 
