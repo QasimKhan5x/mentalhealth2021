@@ -13,8 +13,12 @@ export class LoginService {
   constructor(private http: HttpClient,
     private errorService: ErrorService) {
   }
-
-  getUser(id: string, key: string): Observable<User> {
+  /**
+   * Takes the user id and fetches USer from databse
+   * @param id To fetch corresponding user
+   * @returns Returns an observable of User
+   */
+  getUser(id: string): Observable<User> {
     return this.http.get<User>(baseUrl + '/users/' + id)
       .pipe(catchError(this.errorService.printError));
   }

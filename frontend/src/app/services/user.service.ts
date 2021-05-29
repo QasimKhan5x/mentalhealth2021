@@ -16,11 +16,20 @@ export class UserService {
     private http: HttpClient,
     private errorService: ErrorService,
   ) { }
-
+  /**
+   * takes id of user and fetches user data from DB
+   * @param id Id of user
+   * @returns Observable of User
+   */
   getUser(id: string): Observable<User> {
     return this.http.get<User>(baseUrl + '/users/' + id)
       .pipe(catchError(this.errorService.printError));
   }
+  /**
+   * Provide a copy of updated User and when this PUT request succeeds, update local User data
+   * @param user Takes the User Object (currenlty logged in)
+   * @returns Observable of User
+   */
   updateUser(user: User): Observable<User> {
     const options = {
       headers: new HttpHeaders({
