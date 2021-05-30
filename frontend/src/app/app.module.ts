@@ -23,6 +23,10 @@ import { LoginService } from './services/login.service';
 import { SignupService } from './services/signup.service';
 import { ErrorService } from './services/error.service';
 import { EntryService } from './services/entry.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';;
+import { RefreshComponent } from './refresh/refresh.component'
+
 
 
 @NgModule({
@@ -31,18 +35,17 @@ import { EntryService } from './services/entry.service';
     HeaderComponent,
     SidebarComponent,
     LoginComponent,
-
     RegisterComponent ,
-
     RegisterComponent,
-
     AddEntryComponent,
     AllEntriesComponent,
     AboutUsComponent,
     CalendarComponent,
     UserProfileComponent,
     SettingsComponent,
+    RefreshComponent,
     HomeComponent],
+
 
  
   
@@ -57,7 +60,8 @@ import { EntryService } from './services/entry.service';
       useFactory: adapterFactory,
     }),
     HttpClientModule,
-
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [LoginService, SignupService, ErrorService, EntryService],
   bootstrap: [AppComponent]

@@ -6,13 +6,13 @@ import { AllEntriesComponent } from './allEntries/all-entries/all-entries.compon
 import { CalendarComponent } from './calendar/calendar.component';
 import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './login/login/login.component';
+import { RefreshComponent } from './refresh/refresh.component';
 import { RegisterComponent } from './register/register/register.component';
 import { SettingsComponent } from './settings/settings.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
-const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+const routes: Routes = [  
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: "calendar", component: CalendarComponent },
   {path: "my_profile", component: UserProfileComponent  },
   {path: "settings", component: SettingsComponent  },
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: "load", component: RefreshComponent  },
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
-<div class="d-flex"
+<div class="d-flex" 
   id="wrapper">
   <!-- Sidebar -->
-  <div class="bg-light border-right"
+  <div class="bg-light border-right" *ngIf="authenticated"
     id="sidebar-wrapper">
     <div class="sidebar-heading"><a class="nav-link"
         routerLink="addentry"><i class="bi bi-plus-circle-fill"></i><span>&nbsp;Add Journal</span></a> </div>
@@ -25,10 +25,6 @@
   <!-- /#sidebar-wrapper -->
   <!-- Page Content -->
   <div id="page-content-wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-      <button class="btn btn-outline-secondary tg-btn"
-        id="menu-toggle">Toggle Menu</button>
-    </nav>
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>
