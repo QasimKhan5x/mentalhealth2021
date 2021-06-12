@@ -1,5 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,8 +48,8 @@ import { RefreshComponent } from './refresh/refresh.component'
     HomeComponent],
 
 
- 
-  
+
+
 
 
   imports: [
@@ -58,6 +59,10 @@ import { RefreshComponent } from './refresh/refresh.component'
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
+    }),
+    AuthModule.forRoot({
+      domain: 'dev-qqye5d7r.us.auth0.com',
+      clientId: 'TYiKIIntcukgBJEHd01Y4mhwK9jt6nnW'
     }),
     HttpClientModule,
     FormsModule,
