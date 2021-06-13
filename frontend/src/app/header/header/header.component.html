@@ -57,8 +57,10 @@
                   </a> </li>
               </ul>
               <ul class="md0">
-                <button class="btn btn-outline-secondary"
+                <button class="btn btn-outline-secondary" *ngIf="!authenticated"
                   [routerLink]="['../login']">Login</button>
+                  <button class="btn btn-outline-secondary" *ngIf="authenticated"
+                  (click)="logout()">Logout</button>
 
               </ul>
             </div>
