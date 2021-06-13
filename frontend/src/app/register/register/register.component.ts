@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.user = this.registerForm.value;
     if (!this.user.age) this.user.age = 18;
-    if (!this.user.dateCreation) this.user.dateCreation = Date.now.toString();
+    if (!this.user.dateCreation) this.user.dateCreation = Date();
     if (!this.user.lastname) this.user.lastname = ' ';
 
 
