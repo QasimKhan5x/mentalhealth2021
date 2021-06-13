@@ -1,22 +1,16 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
     firstname: {
         type: String,
-        required: true
     },
     lastname: {
         type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
     },
     age: {
         type: Number,
-        required: true
     },
     email: {
         type: String,
@@ -28,11 +22,42 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
+    profilePicURL: {
+      type: String,
+      unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     dateCreation: {
         type: Date,
         default: Date.now
     }
 });
+
+userSchema.pre("save", function(next) {
+  const user = this
+
+  if (this.isModified("password") || this.isNew) {
+    bcrypt.genSalt(10, function(saltError, salt) {
+      if (saltError) {
+        return next(saltError);
+      } else {
+        bcrypt.hash(user.password, salt, function(hashError, hash) {
+          if (hashError) {
+            return next(hashError);
+          }
+          user.password = hash;
+          next();
+        })
+      }
+    })
+  } else {
+    return next();
+  }
+})
+
 
 const User = new mongoose.model('User', userSchema);
 module.exports = User;

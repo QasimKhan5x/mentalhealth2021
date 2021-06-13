@@ -13,6 +13,18 @@ module.exports = {
             res.status(500).send(e);
         }
     },
+    async getUserByEmail(req, res) {
+        try {
+            const email = req.params.email;
+            const userData = await User.findOne({email});
+            if (!userData)
+                return res.status(404).send(e);
+            else
+                res.status(200).send(userData);
+        } catch (e) {
+            res.status(500).send(e);
+        }
+    },
     async getUsers(req, res) {
         try {
             const usersData = await User.find();
@@ -41,10 +53,32 @@ module.exports = {
             res.status(500).send(e);
         }
     },
+    async deleteUserByEmail(req, res) {
+        try {
+            const email = req.params.email;
+            if (!email)
+                return res.status(400).send();
+            const deleted = await User.deleteOne({email});
+            res.status(200).send(deleted);
+        } catch(e) {
+            res.status(500).send(e);
+        }
+    },
     async updateUser(req, res) {
         try {
             const _id = req.params.id;
             const updatedUsers = await User.findByIdAndUpdate(_id, req.body, {
+                new: true
+            })
+            res.status(200).send(updatedUsers);
+        } catch(e) {
+            res.status(404).send(e);
+        }
+    },
+    async updateUserByEmail(req, res) {
+        try {
+            const email = req.params.email;
+            const updatedUsers = await User.updateOne({email}, req.body, {
                 new: true
             })
             res.status(200).send(updatedUsers);

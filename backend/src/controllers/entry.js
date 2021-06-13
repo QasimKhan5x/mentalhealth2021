@@ -34,6 +34,18 @@ module.exports = {
             res.status(500).send(e);
         }
     },
+    async getEntriesByEmail(req, res) {
+        try {
+            const email = req.params.email;
+            const entries = await Entry.find({email});
+            if (!entries)
+                return res.status(404).send(e);
+            else
+                res.status(200).send(entries);
+        } catch (e) {
+            res.status(500).send(e);
+        }
+    },
     async newEntry(req, res) {
         try {
             const entry = new Entry(req.body);

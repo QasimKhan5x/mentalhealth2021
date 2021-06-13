@@ -9,6 +9,8 @@ router.get('/api/entries', entry.getEntries);
 
 router.get('/api/entries/:userId', entry.getEntriesByUserId);
 
+router.get('/api/entries/:email', entry.getEntriesByEmail);
+
 router.post('/api/entries', entry.newEntry);
 
 router.delete('/entries/:id', entry.deleteEntry);

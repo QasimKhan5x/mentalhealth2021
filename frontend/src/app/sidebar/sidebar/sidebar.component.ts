@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-
+import { LoginComponent } from 'src/app/login/login/login.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +8,7 @@ import * as $ from 'jquery';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+  authenticated = window.localStorage['authenticated'];
   constructor() { }
 
   ngOnInit() {
