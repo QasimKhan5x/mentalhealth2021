@@ -1,27 +1,29 @@
 <div class="d-flex" 
   id="wrapper">
   <!-- Sidebar -->
-  <div class="bg-light border-right" *ngIf="authenticated"
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+  <div class="bg-light border-right" 
     id="sidebar-wrapper">
     <div class="sidebar-heading"><a class="nav-link"
-        routerLink="addentry"><i class="bi bi-plus-circle-fill"></i><span>&nbsp;Add Journal</span></a> </div>
+        routerLink="addentry"><i class="bi bi-plus-circle-fill"></i><span class="item-label">&nbsp;Add Journal</span></a> </div>
     <div class="list-group list-group-flush">
       <a href="../allentries"
-        class="list-group-item list-group-item-action bg-light">All Entries</a>
+        class="list-group-item list-group-item-action bg-light"> <i class="bi bi-journal"></i><span class="item-label">&nbsp;All Entries</span></a>
       <a href="#"
-        class="list-group-item list-group-item-action bg-light">Statistics</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-bar-chart"></i><span class="item-label">&nbsp;Statistics</span></a>
       <a href="#"
-        class="list-group-item list-group-item-action bg-light">Recommendations</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-hand-thumbs-up"></i><span class="item-label">&nbsp;Recommendations</span></a>
       <a href="#"
-        class="list-group-item list-group-item-action bg-light">Calender</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-calendar"></i><span class="item-label">&nbsp;Calender</span></a>
       <a href="#"
-        class="list-group-item list-group-item-action bg-light">View Profile</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-person"></i><span class="item-label">&nbsp;View Profile</span></a>
       <a href="#"
-        class="list-group-item list-group-item-action bg-light">Edit Profile</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-pencil"></i><span class="item-label">&nbsp;Edit Profile</span></a>
       <a href="#"
-        class="list-group-item list-group-item-action bg-light">Setting</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-gear"></i><span class="item-label">&nbsp;Setting</span></a>
     </div>
   </div>
+</ng-container>
   <!-- /#sidebar-wrapper -->
   <!-- Page Content -->
   <div id="page-content-wrapper">

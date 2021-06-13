@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import * as $ from 'jquery';
 import { LoginComponent } from 'src/app/login/login/login.component';
 
@@ -9,8 +11,12 @@ import { LoginComponent } from 'src/app/login/login/login.component';
 })
 export class SidebarComponent implements OnInit {
   authenticated = window.localStorage['authenticated'];
-  constructor() { }
+  constructor(public auth: AuthService,
+    @Inject(DOCUMENT) public document: Document) {
+    
+  }
 
+  
   ngOnInit() {
     //Toggle Click Function
     $("#menu-toggle").click(function (e) {
@@ -18,5 +24,5 @@ export class SidebarComponent implements OnInit {
       $("#wrapper").toggleClass("toggled");
     });
   }
-
 }
+
