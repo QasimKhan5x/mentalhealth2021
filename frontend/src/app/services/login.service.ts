@@ -19,6 +19,8 @@ export class LoginService {
    * @returns Returns an observable of User
    */
   getUser(email: string): Observable<User> {
+    console.log('looking for user', email);
+
     return this.http.get<User>(baseUrl + '/users?' + email)
       .pipe(catchError(this.errorService.printError));
   }

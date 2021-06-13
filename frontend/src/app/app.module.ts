@@ -15,6 +15,7 @@ import { LoginService } from './services/login.service';
 import { SignupService } from './services/signup.service';
 import { ErrorService } from './services/error.service';
 import { EntryService } from './services/entry.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EntryService } from './services/entry.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [LoginService, SignupService, ErrorService, EntryService],
   bootstrap: [AppComponent]
