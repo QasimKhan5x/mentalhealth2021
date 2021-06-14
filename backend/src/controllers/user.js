@@ -4,7 +4,7 @@ module.exports = {
     async getUserById(req, res) {
         try {
             const _id = req.params.id;
-            const userData = await User.findById({_id});
+            const userData = await User.findById({ _id });
             if (!userData)
                 return res.status(404).send(e);
             else
@@ -16,7 +16,8 @@ module.exports = {
     async getUserByEmail(req, res) {
         try {
             const email = req.params.email;
-            const userData = await User.findOne({email});
+            console.log("params has email: ", email);
+            const userData = await User.findOne({ email });
             if (!userData)
                 return res.status(404).send(e);
             else
@@ -49,7 +50,7 @@ module.exports = {
                 return res.status(400).send();
             const deleted = await User.findByIdAndDelete(_id);
             res.status(200).send(deleted);
-        } catch(e) {
+        } catch (e) {
             res.status(500).send(e);
         }
     },
@@ -58,9 +59,9 @@ module.exports = {
             const email = req.params.email;
             if (!email)
                 return res.status(400).send();
-            const deleted = await User.deleteOne({email});
+            const deleted = await User.deleteOne({ email });
             res.status(200).send(deleted);
-        } catch(e) {
+        } catch (e) {
             res.status(500).send(e);
         }
     },
@@ -71,18 +72,18 @@ module.exports = {
                 new: true
             })
             res.status(200).send(updatedUsers);
-        } catch(e) {
+        } catch (e) {
             res.status(404).send(e);
         }
     },
     async updateUserByEmail(req, res) {
         try {
             const email = req.params.email;
-            const updatedUsers = await User.updateOne({email}, req.body, {
+            const updatedUsers = await User.updateOne({ email }, req.body, {
                 new: true
             })
             res.status(200).send(updatedUsers);
-        } catch(e) {
+        } catch (e) {
             res.status(404).send(e);
         }
     }
@@ -121,7 +122,7 @@ module.exports = {
             throw {code: status.BAD_REQUEST, message: 'You must specify the name and email'};
 
         let { name, email } = req.body;
-        
+
         await userModel.create({name, email});
 
         res.json({status: true, message: 'User Added'});
@@ -131,7 +132,7 @@ module.exports = {
             throw {code: status.BAD_REQUEST, message: 'You must specify the id, name and email'};
 
         let { id, name, email } = req.body;
-    
+
         await userModel.updateUser({name, email}, {where:{id}});
 
         res.json({status: true, message: 'User updated'});
