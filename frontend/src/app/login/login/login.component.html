@@ -3,21 +3,27 @@
     <div class="card-body">
         <form [formGroup]="myForm">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" formControlName="username" class="form-control" placeholder="Username" />
+                <label for="username">email</label>
+                <input type="email"
+                    formControlName="email"
+                    class="form-control"
+                    placeholder="Username" />
                 <div class="invalid-feedback">
-                    <div>Username is required</div>
+                    <div>email is required</div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" formControlName="password" class="form-control" />
+                <input type="password"
+                    formControlName="password"
+                    class="form-control" />
                 <div class="invalid-feedback">
                     <div>Password is required</div>
                 </div>
             </div>
 
-            <div class="form-group" *ngIf="!Invalid">
+            <div class="form-group"
+                *ngIf="!Invalid">
                 <label>Invalid Credentials</label>
             </div>
 
@@ -27,8 +33,9 @@
                     <span class=" mr-1"></span>
                     Login
                 </button>
-                <a routerLink="../register" class="btn btn-link">Register</a>
+                <a routerLink="../register"
+                    class="btn btn-link">Register</a>
             </div>
         </form>
     </div>
-</div>  
+</div>

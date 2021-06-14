@@ -27,16 +27,16 @@ export class UserService {
   }
   /**
    * Provide a copy of updated User and when this PUT request succeeds, update local User data
-   * @param user Takes the User Object (currenlty logged in)
+   * @param newdata Takes the User Object (currenlty logged in)
    * @returns Observable of User
    */
-  updateUser(user: User): Observable<User> {
+  updateUser(newdata: any): Observable<User> {
     const options = {
       headers: new HttpHeaders({
         'dataType': 'application/json'
       })
     };
-    return this.http.put<User>(baseUrl + '/users/' + user.id, user, options)
+    return this.http.patch<User>(baseUrl + '/users/' + newdata.id, newdata, options)
       .pipe(catchError(this.errorService.printError));
   }
 }

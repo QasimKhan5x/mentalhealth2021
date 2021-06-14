@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { NewUser } from '../_models/newUser';
 import { User } from '../_models/user';
 import { baseUrl } from '../_shared/baseUrl';
 import { ErrorService } from './error.service';
@@ -19,7 +18,7 @@ export class SignupService {
    * @param newUser takes NewUser Object containing required fields
    * @returns Observable of User or an Error in case Server throws it
    */
-  createUser(newUser: NewUser): Observable<any> {
+  createUser(newUser: { email: string, password: string, profilePicURL: string }): Observable<any> {
     const options = {
       headers: new HttpHeaders({
         'dataType': 'application/json'

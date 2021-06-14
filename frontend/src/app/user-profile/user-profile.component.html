@@ -9,27 +9,23 @@
                     </div>
                     <div class="card-body">
                         <form>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Username">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-6">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Email address" type="email">
+                                        <div *ngIf="userid">User is logged In with id {{userid}}</div>
+                                        <div *ngIf="!userid">User is not logged In</div>
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Fist Name" type="text">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-6">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Last Name" type="text">
+                                        <label for="uName"></label>
+                                        <input matInput
+                                            placeholder="Name"
+                                            type="text"
+                                            id="uName">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -52,16 +48,22 @@
                                     </div> -->
                                 </div>
                             </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update
+                            <button mat-raised-button
+                                type="submit"
+                                class="btn btn-danger pull-right">Update
                                 Profile</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
                     <div>
-                      <label for="Image">Choose a new Profile Picture</label>
-                      <input type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" class="btn btn-info">
-                      <button (click)="uploadImage()" class="btn btn-success pull-right">
-                        Upload Image</button>
+                        <label for="Image">Choose a new Profile Picture</label>
+                        <input type="file"
+                            (change)="upload($event)"
+                            accept="*.png.jpg.jpeg"
+                            class="btn btn-info">
+                        <button (click)="uploadImage()"
+                            class="btn btn-success pull-right">
+                            Upload Image</button>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@
                     <div class="card-avatar">
                         <a href="javascript:void(0)">
                             <img class="img profile-image"
-                                src=".\assets\images\Fahad.jpg" />
+                                [src]="profilePic" />
                         </a>
                     </div>
                     <div class="card-body">

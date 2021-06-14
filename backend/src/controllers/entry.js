@@ -5,9 +5,8 @@ module.exports = {
         try {
             const _id = req.params.id;
             const entries = await Entry.findById({_id});
-            console.log("Hello!");
             if (!entries)
-                res.status(404).send(e);
+                res.status(404).send("No entries");
             else
                 res.status(200).send(entries);
         } catch (e) {
@@ -16,34 +15,18 @@ module.exports = {
     },
     async getEntries(req, res) {
         try {
-            const entries = await Entry.find();
+            const userId = req.query.userId;
+            let entries = {};
+            if (!userId)
+                entries = await Entry.find();
+            else
+                entries = await Entry.find({userId});
+            if (Object.keys(entries).length === 0) {
+                return res.status(404).send(entries);
+            }
             res.status(200).send(entries);
         } catch (e) {
             res.status(404).send(e);
-        }
-    },
-    async getEntriesByUserId(req, res) {
-        try {
-            const userId = req.params.userId;
-            const entries = await Entry.find({userId});
-            if (!entries)
-                return res.status(404).send(e);
-            else
-                res.status(200).send(entries);
-        } catch (e) {
-            res.status(500).send(e);
-        }
-    },
-    async getEntriesByEmail(req, res) {
-        try {
-            const email = req.params.email;
-            const entries = await Entry.find({email});
-            if (!entries)
-                return res.status(404).send(e);
-            else
-                res.status(200).send(entries);
-        } catch (e) {
-            res.status(500).send(e);
         }
     },
     async newEntry(req, res) {
