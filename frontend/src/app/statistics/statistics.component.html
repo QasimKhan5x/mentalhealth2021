@@ -1,8 +1,62 @@
-<div>
-  <div *ngFor="let img of images">
-    <p>{{img}}</p>
+<div class="container">
+  <h1>Images</h1>
+  <div class="row">
+    <div class="col-xs-12 col-md-4" *ngFor="let i of images">
+      <div class="card">
+        <img class="card-user avatar avatar-large" src="{{ i }}">
+        <a class="card-link" href="#"></a>
+      </div>
+    </div>
   </div>
-  <div *ngFor="let act of allactivitiescount | keyvalue">
-    <p>{{act.key}} has {{act.value}} enteries.</p>
+</div>
+
+
+<div class="container mt-5">
+  <h1>Activities Count </h1>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let act of allactivitiescount | keyvalue">
+      <div class="weather-card one">
+        <div class="top">
+          <div class="wrapper">
+            <div class="mynav">
+            </div>
+            <h1 class="heading text-uppercase">{{act.key}}</h1>
+            <br>
+            <p class="temp mt-5">
+              <span class="temp-value">{{act.value}}</span>
+
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="main-content">
+  <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <h2 class="mb-5 text-black">Moods</h2>
+      <div class="header-body">
+        <div class="row">
+          <div class="col-xl-4 col-lg-4 mb-5" *ngFor="let m of moods">
+            <div class="card card-stats mb-4 mb-xl-0 bg-danger">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase mb-0 text-white">{{m}}</h5>
+               
+                  </div>
+                  
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
 </div>
