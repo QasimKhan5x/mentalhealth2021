@@ -36,7 +36,7 @@ export class UserService {
         'dataType': 'application/json'
       })
     };
-    return this.http.patch<User>(baseUrl + '/users/?' + newdata.id, newdata, options)
+    return this.http.patch<User>(baseUrl + '/users/' + newdata.id, newdata, options)
       .pipe(catchError(this.errorService.printError));
   }
 }

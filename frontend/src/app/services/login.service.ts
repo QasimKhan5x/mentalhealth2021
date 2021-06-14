@@ -21,7 +21,7 @@ export class LoginService {
   getUser(id: string): Observable<[User]> {
     console.log('gettinguser of ', id);
 
-    return this.http.get<[User]>(baseUrl + '/users?' + id)
+    return this.http.get<[User]>(baseUrl + '/users?email=' + id)
       .pipe(catchError(this.errorService.printError));
   }
 }

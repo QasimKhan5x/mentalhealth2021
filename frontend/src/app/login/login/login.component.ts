@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   myForm: FormGroup;
   Invalid = false;
-  Authenticated = false;
+  Authenticated: string | any;
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern('^[0-9]*')]],
@@ -30,20 +30,18 @@ export class LoginComponent implements OnInit {
 
     this.loginService.getUser(this.myForm.get("email")?.value)
       .subscribe(
-        (user) => {
+        (myuser) => {
+          let user = myuser[0];
           console.log('success returned.', user);
-          let myuser = user.filter(u => u.email == this.myForm.get("email")?.value)[0];
-          console.log('from server"s return myuser extracted.', myuser);
-
-          let x = 0;
-          bcrypt.compare(this.myForm.get('password')?.value, myuser.password, (err: any, result: any) => {
+          bcrypt.compare(this.myForm.get('password')?.value, user.password, (err: any, result: any) => {
             console.log('pass word compare:', result, err);
             if (result) {
               this.Authenticated = true;
               console.log('password correct. authenticated shouwld be true');
+              sessionStorage.setItem('authenticated', 'true');
+              sessionStorage.setItem('userid', user._id);
+              sessionStorage.setItem('profilePic', user.profilePicURL);
 
-              window.localStorage['authenticated'] = true;
-              console.log(window.localStorage['authenticated']);
 
               this.router.navigate(['/my_profile']).then(() => {
                 //window.location.reload();
@@ -51,22 +49,15 @@ export class LoginComponent implements OnInit {
             }
             else {
               console.log('something went wrong.. check your password..');
-
             }
-          });
-          console.log(x);
-
-          if (myuser.password == this.myForm.get("password")?.value) {
 
           }
+          )
         },
         (error) => {
-          console.log("Error returned ", error);
-          this.Invalid = true;
+          console.log('cant get user data from server', error);
         }
-      )
-  }
+      );//subscribe ends
+  }//login user ends
+}//class ends
 
-
-
-}
