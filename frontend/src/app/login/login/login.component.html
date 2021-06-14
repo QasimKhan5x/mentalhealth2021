@@ -3,40 +3,32 @@
     <div class="card-body">
         <form [formGroup]="myForm">
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text"
-                    formControlName="username"
-                    class="form-control"
-                    placeholder="Username" />
+                <label for="username">Username</label>
+                <input type="text" formControlName="username" class="form-control" placeholder="Username" />
                 <div class="invalid-feedback">
-                    <div>Email is required</div>
+                    <div>Username is required</div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password"
-                    formControlName="password"
-                    class="form-control" />
+                <input type="password" formControlName="password" class="form-control" />
                 <div class="invalid-feedback">
                     <div>Password is required</div>
                 </div>
             </div>
 
-            <div class="form-group"
-                *ngIf="!Invalid">
+            <div class="form-group" *ngIf="!Invalid">
                 <label>Invalid Credentials</label>
             </div>
 
 
             <div class="form-group">
-                <button class="btn btn-primary"
-                    (click)="loginUser()">
+                <button class="btn btn-primary" (click)="loginUser()">
                     <span class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>
-                <a routerLink="/register"
-                    class="btn btn-link">Register</a>
+                <a routerLink="../register" class="btn btn-link">Register</a>
             </div>
         </form>
     </div>
-</div>
+</div>  

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -13,15 +13,18 @@ export class LoginComponent implements OnInit {
   myForm: FormGroup;
   Invalid = false;
   Authenticated = false;
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
+  constructor(private fb: FormBuilder,private loginService: LoginService,private router: Router) {
     this.myForm = this.fb.group({
       username: ['', [Validators.required, Validators.pattern('^[0-9]*')]],
       password: ['', [Validators.required, Validators.email]],
     })
-  }
+   }
 
   ngOnInit(): void {
+    
+  
   }
+
   loginUser() {
     this.loginService.getUser(this.myForm.get("username")?.value)
       .subscribe(
@@ -32,15 +35,15 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/my_profile']).then(() => {
               window.location.reload();
             });
-          }
+          } 
         },
         (error) => {
           console.log("Error");
           this.Invalid = true;
         }
-      )
+    )
   }
-
+ 
 
 
 }

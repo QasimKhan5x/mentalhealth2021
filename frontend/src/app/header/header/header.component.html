@@ -57,16 +57,11 @@
                   </a> </li>
               </ul>
               <ul class="md0">
-                <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-                  <button class="btn btn-outline-secondary"
-                  (click)="auth.logout({ returnTo: document.location.origin })">
-                    Logout
-                  </button>
-                </ng-container>
-                <ng-template #loggedOut>
-                  <button class="btn btn-outline-secondary"
-                  (click)="auth.loginWithRedirect()">Log in</button>
-                </ng-template>
+                <button class="btn btn-outline-secondary" *ngIf="!authenticated"
+                  [routerLink]="['../login']">Login</button>
+                  <button class="btn btn-outline-secondary" *ngIf="authenticated"
+                  (click)="logout()">Logout</button>
+
               </ul>
             </div>
 

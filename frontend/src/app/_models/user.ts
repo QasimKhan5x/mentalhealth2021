@@ -2,7 +2,7 @@ import { Entry } from "./entry";
 export class User {
   "id": string;
   "firstname": string;
-  "lastname": string;
+  "lasttname": string;
   "password": string;
   "age": number;
   "dateCreation": string;

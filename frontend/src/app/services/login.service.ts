@@ -18,10 +18,8 @@ export class LoginService {
    * @param id To fetch corresponding user
    * @returns Returns an observable of User
    */
-  getUser(email: string): Observable<User> {
-    console.log('looking for user', email);
-
-    return this.http.get<User>(baseUrl + '/users?' + email)
+  getUser(id: string): Observable<User> {
+    return this.http.get<User>(baseUrl + '/users/' + id)
       .pipe(catchError(this.errorService.printError));
   }
 }
