@@ -81,7 +81,6 @@ module.exports = {
     },
     async updateUserByEmail(req, res) {
         try {
-            console.log("Available");
             const email = req.query.email;
             console.log(email);
             if (!email) {
@@ -90,7 +89,6 @@ module.exports = {
             const updatedUsers = await User.updateOne({email}, { $set: req.body }, {
                 new: true
             })
-            console.log("wtf?")
             res.status(200).send(updatedUsers);
         } catch(e) {
             res.status(404).send(e);
