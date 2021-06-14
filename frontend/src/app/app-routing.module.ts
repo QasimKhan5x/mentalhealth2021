@@ -11,10 +11,11 @@ import { LoginComponent } from './login/login/login.component';
 import { RefreshComponent } from './refresh/refresh.component';
 import { RegisterComponent } from './register/register/register.component';
 import { SettingsComponent } from './settings/settings.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
-const routes: Routes = [  
+const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
@@ -22,8 +23,9 @@ const routes: Routes = [
   { path: "addentry", component: AddEntryComponent },
   { path: "about-us", component: AboutUsComponent },
   { path: "calendar", component: CalendarComponent },
-  {path: "my_profile", component: UserProfileComponent  },
-  {path: "settings", component: SettingsComponent  },
+  { path: "statistics", component: StatisticsComponent },
+  { path: "my_profile", component: UserProfileComponent },
+  { path: "settings", component: SettingsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: "contact-us", component: ContactUsComponent },
 ];

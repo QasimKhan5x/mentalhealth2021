@@ -34,7 +34,9 @@ import { RefreshComponent } from './refresh/refresh.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';;
 import { ContactUsComponent } from './contact-us/contact-us.component'
-;
+  ;
+import { StatisticsComponent } from './statistics/statistics.component'
+  ;
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
     RefreshComponent,
     HomeComponent,
     ContactUsComponent,
+    StatisticsComponent
   ],
 
   imports: [
@@ -80,4 +83,4 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
   providers: [LoginService, SignupService, ErrorService, EntryService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

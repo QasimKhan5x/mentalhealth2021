@@ -1,0 +1,8 @@
+<div>
+  <div *ngFor="let img of images">
+    <p>{{img}}</p>
+  </div>
+  <div *ngFor="let act of allactivitiescount | keyvalue">
+    <p>{{act.key}} has {{act.value}} enteries.</p>
+  </div>
+</div>
