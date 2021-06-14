@@ -18,7 +18,7 @@ export class SignupService {
    * @param newUser takes NewUser Object containing required fields
    * @returns Observable of User or an Error in case Server throws it
    */
-  createUser(newUser: { email: string, password: string, profilePicURL: string }): Observable<any> {
+  createUser(newUser: any): Observable<any> {
     const options = {
       headers: new HttpHeaders({
         'dataType': 'application/json'

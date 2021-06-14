@@ -31,10 +31,9 @@ export class MytestComponent implements OnInit {
 
   }
   loginUser() {
-    this.loginService.getUser('1', '1234')
+    this.loginService.getUser('1')
       .subscribe(
         (user) => {
-          this.user = user;
           console.log('success', user);
         },
         (error) => {
@@ -43,14 +42,12 @@ export class MytestComponent implements OnInit {
       )
   }
   createUser() {
-    let newUser: NewUser =
+    let newUser: User =
     {
       firstname: "zz",
-      lastname: 'mm',
-      id: '1',
+      _id: '1',
       password: '1122',
-      age: 18,
-      enteries: []
+      age: 18
     };
     this.signupService.createUser(newUser)
       .subscribe(
@@ -68,7 +65,7 @@ export class MytestComponent implements OnInit {
       console.log('no user found');
       return;
     }
-    this.entryService.getEnteries(this.user.id)
+    this.entryService.getEnteries(this.user._id)
       .subscribe(
         (entries) => {
           this.enteries = entries;
@@ -86,14 +83,14 @@ export class MytestComponent implements OnInit {
     }
     let entry: Entry =
     {
-      userid: this.user.id,
+      userid: this.user._id,
       activities: ['food', 'family'],
       image: 'google.com/images/1234',
       mood: 'Meh',
       text: 'weather could be beter',
       time: new Date().toISOString()
     }
-    this.entryService.addEntry(this.user.id, entry)
+    this.entryService.addEntry(entry)
       .subscribe(
         (entry) => {
           console.log(entry);

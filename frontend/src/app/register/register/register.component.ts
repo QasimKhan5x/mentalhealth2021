@@ -12,15 +12,18 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private signupService: SignupService) { }
   registerForm = this.fb.group({
     email: [''],
-    password: ['']
+    password: [''],
+    name: ['']
   })
   ngOnInit(): void {
   }
   register() {
     let newUser = {
+
       email: this.registerForm.get('email')?.value,
+      name: this.registerForm.get('name')?.value,
       password: this.registerForm.get('password')?.value,
-      profilePicURL: 'newURLNotYetGeneratedByTheServer'
+      profilePicURL: ''
     }
     console.log('sending new user to server... ', newUser);
 

@@ -24,7 +24,7 @@ export class EntryService {
    * @returns observable of all enteries
    */
   getEnteries(userID: string): Observable<Entry[]> {
-    let url = baseUrl + '/enteries?userid=' + userID;
+    let url = baseUrl + '/entries/' + userID;
     console.log('accessing url ', url, " for enteries of id: ", userID);
 
     return this.http.get<Entry[]>(url)
@@ -41,7 +41,7 @@ export class EntryService {
         'dataType': 'application/json'
       })
     };
-    return this.http.post<Entry>(baseUrl + '/enteries/', entry, options)
+    return this.http.post<Entry>(baseUrl + '/entries/', entry, options)
       .pipe(catchError(this.errorService.printError));
   }
 }
