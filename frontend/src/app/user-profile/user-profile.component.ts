@@ -46,6 +46,8 @@ export class UserProfileComponent implements OnInit {
     this.userService.updateUser({ id: this.userid, profilePicURL: srcurl })
       .subscribe(
         (success) => {
+          this.profilePic = srcurl;
+          sessionStorage.setItem('profilePic', srcurl);
           console.log('image uploaded and db updated. new data ', success);
         },
         (error) => {

@@ -15,7 +15,7 @@ let activity = <Array<string>>new Array();
 export default class AddEntryComponent implements OnInit {
   entryText = new FormControl();
   mood: any;
-  currentActivity: any = "";
+  currentActivity: any;
 
   path?: File;
   userid!: string | any;
@@ -25,6 +25,8 @@ export default class AddEntryComponent implements OnInit {
   constructor(private fireStorage: AngularFireStorage,
     private entryService: EntryService,
     private router: Router,) {
+    console.log('all activities', this.currentActivity);
+
     this.userid = sessionStorage.getItem('userid');
     if (!this.userid) { this.router.navigate(['/login']) }
   }
@@ -37,6 +39,9 @@ export default class AddEntryComponent implements OnInit {
   onMoodClick(event: any) {
     this.mood = event.target.classList[0];
   }
+  has(activity: string): boolean {
+    return this.currentActivity.includes(activity);
+  }
 
   onActClick(event: any) {
     this.currentActivity = event.target.classList[0];
@@ -44,13 +49,15 @@ export default class AddEntryComponent implements OnInit {
     const index = activity.indexOf(this.currentActivity);
     if (index >= 0) {
       activity.splice(index, 1);
-
     }
     else {
       activity.push(this.currentActivity);
     }
     console.log(activity);
     this.currentActivity = activity;
+  }
+  getActivity(): string {
+    return this.currentActivity.toString();
   }
   saveEntry() {
     let entry = {
@@ -60,10 +67,26 @@ export default class AddEntryComponent implements OnInit {
       text: this.entryText.value
     }
     console.log('entry created.. now creating image...', entry);
-
-    this.uploadImage(entry);
+    if (this.path) {
+      this.uploadImage(entry);
+    }
+    else {
+      this.uploadEntry(entry);
+    }
   }
 
+
+  uploadEntry(entry: any) {
+    this.entryService.addEntry(entry)
+      .subscribe(
+        (success) => {
+          console.log('entry uploaded and db updated. new data ', success);
+        },
+        (error) => {
+          console.log('db update failed after entry posting... ', error);
+        }
+      )
+  }
 
 
 
@@ -74,7 +97,7 @@ export default class AddEntryComponent implements OnInit {
       const filePath = '/entries/' + this.userid + '/img-' + this.path?.name;    //path at which image will be stored in the firebase storage
       const snap = await this.fireStorage.upload(filePath, this.path);    //upload task
       this.getUrl(snap, entry);
-    } else { alert('Please select an image'); }
+    }
   }
 
   //method to retrieve download url
@@ -86,15 +109,8 @@ export default class AddEntryComponent implements OnInit {
 
     entry['imageURL'] = srcurl;
     console.log('entry sending fro upload with data:  ', entry);
-    this.entryService.addEntry(entry)
-      .subscribe(
-        (success) => {
-          console.log('entry uploaded and db updated. new data ', success);
-        },
-        (error) => {
-          console.log('db update failed after entry posting... ', error);
-        }
-      )
+
+    this.uploadEntry(entry);
   }
 
 }

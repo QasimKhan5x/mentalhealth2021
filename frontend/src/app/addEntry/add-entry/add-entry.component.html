@@ -28,6 +28,7 @@
       <div class="col-12 pb-5">
         <input class="gaming checkbox-booking"
           type="checkbox"
+          ng-checked="has('Gaming')"
           name="booking"
           id="booking-1"
           (click)="onActClick($event)">
@@ -39,6 +40,7 @@
         <!--
           --><input class="study checkbox-booking"
           type="checkbox"
+          ng-checked="has('Study')"
           name="booking"
           id="booking-2"
           (click)="onActClick($event)">
@@ -50,6 +52,7 @@
         <!--
           --><input class="travel checkbox-booking"
           type="checkbox"
+          ng-checked="has('Travel')"
           name="booking"
           id="booking-3"
           (click)="onActClick($event)">
@@ -62,6 +65,7 @@
         <!--
           --><input class="sports checkbox-booking"
           type="checkbox"
+          ng-checked="has('Sports')"
           name="booking"
           id="booking-4"
           (click)="onActClick($event)">
@@ -73,6 +77,7 @@
         <!--
           --><input class="eating checkbox-booking"
           type="checkbox"
+          ng-checked="has('Eating')"
           name="booking"
           id="booking-5"
           (click)="onActClick($event)">
@@ -84,6 +89,7 @@
         <!--
           --><input class="shows/movies checkbox-booking"
           type="checkbox"
+          ng-checked="has('Shows/Movies')"
           name="booking"
           id="booking-6"
           (click)="onActClick($event)">
@@ -95,6 +101,7 @@
         <!--
           --><input class="shopping checkbox-booking"
           type="checkbox"
+          ng-checked="has('Shopping')"
           name="booking"
           id="booking-7"
           (click)="onActClick($event)">
@@ -106,6 +113,7 @@
         <!--
           --><input class="painting checkbox-booking"
           type="checkbox"
+          ng-checked="has('Painting')"
           name="booking"
           id="booking-8"
           (click)="onActClick($event)">
@@ -117,6 +125,7 @@
         <!--
           --><input class="driving checkbox-booking"
           type="checkbox"
+          ng-checked="has('Driving')"
           name="booking"
           id="booking-9"
           (click)="onActClick($event)">
@@ -128,6 +137,7 @@
         <!--
           --><input class="photography checkbox-booking"
           type="checkbox"
+          ng-checked="has('Photography')"
           name="booking"
           id="booking-10"
           (click)="onActClick($event)">
@@ -139,6 +149,7 @@
         <!--
           --><input class="music checkbox-booking"
           type="checkbox"
+          ng-checked="has('Music')"
           name="booking"
           id="booking-11"
           (click)="onActClick($event)">
@@ -150,6 +161,7 @@
         <!--
           --><input class="writing checkbox-booking"
           type="checkbox"
+          ng-checked="has('Writing')"
           name="booking"
           id="booking-12"
           (click)="onActClick($event)">
@@ -160,6 +172,7 @@
         </label>
         <input class="other checkbox-booking"
           type="checkbox"
+          ng-checked="has('Other')"
           name="booking"
           id="booking-13"
           (click)="onActClick($event)">
@@ -172,7 +185,7 @@
 
 
       <p> Selected mood is: <b>{{mood}}</b> </p>
-      <p> Selected activity is: <b>{{currentActivity}}</b> </p>
+      <p> Selected activity is: <b>{{getActivity()}}</b> </p>
 
       <textarea [formControl]="entryText"
         placeholder="Write down your feelings"
