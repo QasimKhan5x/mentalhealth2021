@@ -2,7 +2,13 @@ nav{
   position: relative;  
   margin: 0;
 }
-
+.navbar-collapse{
+  display: flex;
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-around;
+}
 
 /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
 .icon-width { width: 2rem;}
