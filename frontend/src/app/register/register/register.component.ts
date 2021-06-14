@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SignupService } from 'src/app/services/signup.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SignupService } from 'src/app/services/signup.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private signupService: SignupService) { }
+  constructor(private fb: FormBuilder, private signupService: SignupService, private router: Router) { }
   registerForm = this.fb.group({
     email: [''],
     password: [''],
@@ -31,6 +32,15 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (user) => {
           console.log('user created successfully. server returned: ', user);
+          sessionStorage.setItem('authenticated', 'true');
+          sessionStorage.setItem('userid', user._id);
+          sessionStorage.setItem('name', user.firstname);
+          sessionStorage.setItem('profilePic', user.profilePicURL);
+
+
+          this.router.navigate(['/my_profile']).then(() => {
+            window.location.reload();
+          });
         },
         (error) => { console.log('user creation failed. server returned: ', error); }
       )
