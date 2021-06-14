@@ -22,6 +22,9 @@ const userSchema = new mongoose.Schema({
       }
     }
   },
+  profilePicURL: {
+    type: String
+  },
   password: {
     type: String,
     required: true
@@ -30,6 +33,15 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+},
+  password: {
+  type: String,
+  required: true
+},
+  dateCreation: {
+  type: Date,
+  default: Date.now
+}
 });
 
 userSchema.pre("save", function (next) {

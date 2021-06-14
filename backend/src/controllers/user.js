@@ -13,29 +13,31 @@ module.exports = {
             res.status(500).send(e);
         }
     },
-    async getUserByEmail(req, res) {
+    async getUser(req, res) {
         try {
-            const email = req.params.email;
-            console.log("params has email: ", email);
-            const userData = await User.findOne({ email });
-            if (!userData)
-                return res.status(404).send(e);
-            else
-                res.status(200).send(userData);
+            const email = req.query.email;
+            let usersData = {};
+            if (email) {
+                usersData = await User.find({ email });
+            } else {
+                usersData = await User.find();
+            }
+            if (Object.keys(usersData).length === 0) {
+                return res.status(404).send(usersData);
+            }
+            res.status(200).send(usersData);
         } catch (e) {
             res.status(500).send(e);
         }
     },
-    async getUsers(req, res) {
-        try {
-            const usersData = await User.find();
-            res.status(200).send(usersData);
-        } catch (e) {
-            res.status(404).send(e);
-        }
-    },
     async newUser(req, res) {
         try {
+            console.log(req.body);
+            const email = req.body.email;
+            const existingUser = await User.find({ email });
+            if (Object.keys(existingUser).length !== 0) {
+                return res.status(409).send({});
+            }
             const user = new User(req.body);
             const userCreated = user.save();
             res.status(201).send(userCreated);
@@ -56,9 +58,10 @@ module.exports = {
     },
     async deleteUserByEmail(req, res) {
         try {
-            const email = req.params.email;
-            if (!email)
-                return res.status(400).send();
+            const email = req.query.email;
+            if (!email) {
+                return res.status(400).send("Provide User's Email");
+            }
             const deleted = await User.deleteOne({ email });
             res.status(200).send(deleted);
         } catch (e) {
@@ -78,8 +81,12 @@ module.exports = {
     },
     async updateUserByEmail(req, res) {
         try {
-            const email = req.params.email;
-            const updatedUsers = await User.updateOne({ email }, req.body, {
+            const email = req.query.email;
+            console.log(email);
+            if (!email) {
+                return res.status(400).send("Provide User's Email");
+            }
+            const updatedUsers = await User.updateOne({ email }, { $set: req.body }, {
                 new: true
             })
             res.status(200).send(updatedUsers);

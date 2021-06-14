@@ -13,7 +13,7 @@ router.get('/api/entries/:email', entry.getEntriesByEmail);
 
 router.post('/api/entries', entry.newEntry);
 
-router.delete('/entries/:id', entry.deleteEntry);
+router.delete('/api/entries/:id', entry.deleteEntry);
 
 router.patch('/api/entries/:id', entry.updateEntry);
 
