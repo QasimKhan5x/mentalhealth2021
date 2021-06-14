@@ -23,8 +23,7 @@ const userSchema = new mongoose.Schema({
         }
     },
     profilePicURL: {
-      type: String,
-      unique: true
+      type: String
     },
     password: {
         type: String,
