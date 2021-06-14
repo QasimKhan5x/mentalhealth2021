@@ -21,13 +21,13 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: 'allentries', component: AllEntriesComponent },
   { path: "addentry", component: AddEntryComponent },
-  { path: "about-us", component: AboutUsComponent },
+  { path: "aboutus", component: AboutUsComponent },
   { path: "calendar", component: CalendarComponent },
   { path: "statistics", component: StatisticsComponent },
   { path: "my_profile", component: UserProfileComponent },
   { path: "settings", component: SettingsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: "contact-us", component: ContactUsComponent },
+  { path: "contact", component: ContactUsComponent },
 ];
 
 @NgModule({
