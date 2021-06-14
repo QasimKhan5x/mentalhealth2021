@@ -32,7 +32,10 @@ import { RefreshComponent } from './refresh/refresh.component';
 
 // Firebase modules
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire';;
+import { ContactUsComponent } from './contact-us/contact-us.component'
+;
+
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import { AngularFireModule } from '@angular/fire';
     SettingsComponent,
     RefreshComponent,
     HomeComponent,
+    ContactUsComponent,
   ],
 
   imports: [

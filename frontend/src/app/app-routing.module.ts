@@ -4,6 +4,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import AddEntryComponent from './addEntry/add-entry/add-entry.component';
 import { AllEntriesComponent } from './allEntries/all-entries/all-entries.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
 import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './login/login/login.component';
 import { RefreshComponent } from './refresh/refresh.component';
@@ -23,7 +25,7 @@ const routes: Routes = [
   {path: "my_profile", component: UserProfileComponent  },
   {path: "settings", component: SettingsComponent  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {path: "load", component: RefreshComponent  },
+  { path: "contact-us", component: ContactUsComponent },
 ];
 
 @NgModule({
