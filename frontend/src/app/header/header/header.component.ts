@@ -8,17 +8,17 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  authenticated = window.localStorage["authenticated"];
+  authenticated = sessionStorage.getItem('authenticated') == "true" ? true : false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    window.localStorage.removeItem('authenticated');
-    this.router.navigate(['/home']).then(() => {
-      window.location.reload();
-    });
+    sessionStorage.removeItem('authenticated');
+    sessionStorage.removeItem('profilePic');
+    sessionStorage.removeItem('userid');
+    this.router.navigate(['/home']);
   }
 
 }

@@ -1,25 +1,24 @@
-<div class="d-flex" 
+<div class="d-flex"
   id="wrapper">
   <!-- Sidebar -->
-  <div class="bg-light border-right" *ngIf="authenticated"
+  <div class="bg-light border-right"
+    *ngIf="authenticated"
     id="sidebar-wrapper">
     <div class="sidebar-heading"><a class="nav-link"
-        routerLink="addentry"><i class="bi bi-plus-circle-fill"></i><span>&nbsp;Add Journal</span></a> </div>
+        routerLink="/addentry"><i class="bi bi-plus-circle-fill"></i><span>&nbsp;Add Journal</span></a> </div>
     <div class="list-group list-group-flush">
-      <a href="../allentries"
+      <a routerLink="/allentries"
         class="list-group-item list-group-item-action bg-light">All Entries</a>
-      <a href="#"
+      <a routerLink="#"
         class="list-group-item list-group-item-action bg-light">Statistics</a>
-      <a href="#"
+      <a routerLink="#"
         class="list-group-item list-group-item-action bg-light">Recommendations</a>
-      <a href="#"
+      <a routerLink="calendar"
         class="list-group-item list-group-item-action bg-light">Calender</a>
-      <a href="#"
+      <a routerLink="my_profile"
         class="list-group-item list-group-item-action bg-light">View Profile</a>
-      <a href="#"
+      <a routerLink=""
         class="list-group-item list-group-item-action bg-light">Edit Profile</a>
-      <a href="#"
-        class="list-group-item list-group-item-action bg-light">Setting</a>
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
