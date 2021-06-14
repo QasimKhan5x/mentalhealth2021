@@ -8,15 +8,11 @@ import { LoginComponent } from 'src/app/login/login/login.component';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  authenticated = window.localStorage['authenticated'];
+  authenticated = sessionStorage.getItem('authenticated') == "true" ? true : false;
   constructor() { }
 
   ngOnInit() {
-    //Toggle Click Function
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
+
   }
 
 }

@@ -60,4 +60,3 @@ export class LoginComponent implements OnInit {
       );//subscribe ends
   }//login user ends
 }//class ends
-
