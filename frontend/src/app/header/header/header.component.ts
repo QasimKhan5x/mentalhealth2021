@@ -8,8 +8,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  authenticated = sessionStorage.getItem('authenticated') == "true" ? true : false;
-  constructor(private router: Router) { }
+  authenticated = false;
+
+  constructor(private router: Router) {
+    if (sessionStorage.getItem('userid')) {
+      this.authenticated = true;
+    }
+    console.log(this.authenticated);
+  }
 
   ngOnInit(): void {
   }

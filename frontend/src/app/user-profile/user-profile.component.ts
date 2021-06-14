@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { sequenceEqual } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
@@ -13,6 +14,7 @@ export class UserProfileComponent implements OnInit {
   path?: File;
   userid!: string | any;
   profilePic!: string | any;
+  aboutme = new FormControl();
   constructor(private fireStorage: AngularFireStorage, private router: Router, private userService: UserService) {
     this.userid = sessionStorage.getItem('userid');
     if (!this.userid) { this.router.navigate(['/login']) }
@@ -43,7 +45,7 @@ export class UserProfileComponent implements OnInit {
     const url = await snap.ref.getDownloadURL();
     let srcurl = url;  //store the URL
     console.log(srcurl);
-    this.userService.updateUser({ id: this.userid, profilePicURL: srcurl })
+    this.userService.updateUser({ id: this.userid, profilePicURL: srcurl, aboutme: this.aboutme })
       .subscribe(
         (success) => {
           this.profilePic = srcurl;
