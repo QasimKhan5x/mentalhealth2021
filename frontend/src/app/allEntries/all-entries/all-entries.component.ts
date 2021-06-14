@@ -24,10 +24,10 @@ export class AllEntriesComponent implements OnInit {
 
     this.entryService.getEntries(this.userid).subscribe(
       (myEnteries) => {
+        this.activity = myEnteries;
         myEnteries.forEach(function (value) {
           console.log(value);
         })
-
       },
       (error) => {
         console.log('cant get user data from server', error);
