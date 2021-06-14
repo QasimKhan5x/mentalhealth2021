@@ -14,12 +14,14 @@ export class UserProfileComponent implements OnInit {
   path?: File;
   userid!: string | any;
   profilePic!: string | any;
+  name!: string | any;
   aboutme = new FormControl();
   constructor(private fireStorage: AngularFireStorage, private router: Router, private userService: UserService) {
     this.userid = sessionStorage.getItem('userid');
     if (!this.userid) { this.router.navigate(['/login']) }
     else {
       this.profilePic = sessionStorage.getItem('profilePic');
+      this.name = sessionStorage.getItem('name');
     }
   }
 

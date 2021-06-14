@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     let newUser = {
 
       email: this.registerForm.get('email')?.value,
-      name: this.registerForm.get('name')?.value,
+      firstname: this.registerForm.get('name')?.value,
       password: this.registerForm.get('password')?.value,
       profilePicURL: ''
     }

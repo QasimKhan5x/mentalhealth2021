@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
               console.log('password correct. authenticated shouwld be true');
               sessionStorage.setItem('authenticated', 'true');
               sessionStorage.setItem('userid', user._id);
+              sessionStorage.setItem('name', user.firstname);
               sessionStorage.setItem('profilePic', user.profilePicURL);
 
 

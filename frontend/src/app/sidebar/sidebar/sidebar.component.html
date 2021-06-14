@@ -5,27 +5,36 @@
     *ngIf="authenticated"
     id="sidebar-wrapper">
     <div class="sidebar-heading"><a class="nav-link"
-        routerLink="/addentry"><i class="bi bi-plus-circle-fill"></i><span>&nbsp;Add Journal</span></a> </div>
+        routerLink="/addentry"><i class="bi bi-plus-circle-fill"></i><span class="item-label">&nbsp;Add
+          Journal</span></a> </div>
     <div class="list-group list-group-flush">
       <a routerLink="/allentries"
-        class="list-group-item list-group-item-action bg-light">All Entries</a>
+        class="list-group-item list-group-item-action bg-light"> <i class="bi bi-journal"></i><span
+          class="item-label">&nbsp;All Entries</span></a>
       <a routerLink="statistics"
-        class="list-group-item list-group-item-action bg-light">Statistics</a>
-      <a routerLink="#"
-        class="list-group-item list-group-item-action bg-light">Recommendations</a>
-      <a routerLink="calendar"
-        class="list-group-item list-group-item-action bg-light">Calender</a>
-      <a routerLink="my_profile"
-        class="list-group-item list-group-item-action bg-light">View Profile</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-bar-chart"></i><span
+          class="item-label">&nbsp;Statistics</span></a>
       <a routerLink=""
-        class="list-group-item list-group-item-action bg-light">Edit Profile</a>
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-hand-thumbs-up"></i><span
+          class="item-label">&nbsp;Recommendations</span></a>
+      <a routerLink="/calendar"
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-calendar"></i><span
+          class="item-label">&nbsp;Calender</span></a>
+      <a routerLink="/my_profile"
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-person"></i><span
+          class="item-label">&nbsp;View Profile</span></a>
+      <a routerLink="/my_profile"
+        class="list-group-item list-group-item-action bg-light"><i class="bi bi-pencil"></i><span
+          class="item-label">&nbsp;Edit Profile</span></a>
     </div>
+
   </div>
   <!-- /#sidebar-wrapper -->
   <!-- Page Content -->
   <div id="page-content-wrapper">
     <div class="container-fluid">
-      <router-outlet></router-outlet>
+      <router-outlet>
+      </router-outlet>
     </div>
   </div>
   <!-- /#page-content-wrapper -->

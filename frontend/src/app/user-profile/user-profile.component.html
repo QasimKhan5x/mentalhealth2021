@@ -39,10 +39,10 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                        <h4 class="card-title">Fahad Zaheer</h4>
-
-
+                        <h4 class="card-title"
+                            *ngIf="name"> Name : {{name}}</h4>
+                        <h4 class="card-title"
+                            *ngIf="name===undefined"> ~no name set~🙈</h4>
                     </div>
                 </div>
             </div>
