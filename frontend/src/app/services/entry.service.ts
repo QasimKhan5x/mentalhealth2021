@@ -23,8 +23,8 @@ export class EntryService {
    * @param userID takes Id of currently looged in user
    * @returns observable of all enteries
    */
-  getEnteries(userID: string): Observable<Entry[]> {
-    let url = baseUrl + '/entries/' + userID;
+  getEntries(userID: string): Observable<Entry[]> {
+    let url = baseUrl + '/entries/?userId=' + userID;
     console.log('accessing url ', url, " for enteries of id: ", userID);
 
     return this.http.get<Entry[]>(url)

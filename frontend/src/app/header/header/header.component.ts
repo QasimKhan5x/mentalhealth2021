@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('authenticated');
     sessionStorage.removeItem('profilePic');
     sessionStorage.removeItem('userid');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home']).then(() => {
+      window.location.reload();
+    });
   }
 
 }

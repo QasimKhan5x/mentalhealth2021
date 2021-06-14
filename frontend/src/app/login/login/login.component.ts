@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
 
               this.router.navigate(['/my_profile']).then(() => {
-                //window.location.reload();
+                window.location.reload();
               });
             }
             else {
@@ -60,4 +60,3 @@ export class LoginComponent implements OnInit {
       );//subscribe ends
   }//login user ends
 }//class ends
-
